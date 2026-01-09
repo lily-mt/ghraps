@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <stack>
+
 
 using namespace std;
 
@@ -22,7 +22,7 @@ public:
 
     void print_Graph(int);
     void BFS(int s);
-    void DFS(int s);
+    
 };
 
 void Graph::print_Graph(int V) {
@@ -58,36 +58,8 @@ void Graph::BFS(int s) {
             }
         }
     }
-
-    delete[] visited;
 }
 
-void Graph::DFS(int s) {
-    bool* visited = new bool[V];
-    for (int i = 0; i < V; ++i)
-        visited[i] = false;
-
-    stack<int> ST;
-    vector<int>::iterator it;
-
-    ST.push(s);
-    visited[s] = true;
-
-    while (!ST.empty()) {
-        int u = ST.top();
-        ST.pop();
-
-        for (it = adj[u].begin(); it != adj[u].end(); ++it) {
-            if (!visited[*it]) {
-                visited[*it] = true;
-                ST.push(*it);
-                cout << u << "->" << *it << endl;
-            }
-        }
-    }
-
-    delete[] visited;
-}
 
 
 int main() {
@@ -106,8 +78,7 @@ int main() {
     G.BFS(2);
 
 
-    cout << endl << "DFS starting from 2:" << endl;
-    G.DFS(2);
+  
 
     return 0;
 }
