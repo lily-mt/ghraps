@@ -9,6 +9,16 @@ typedef pair<int,int> ipair;
 void addEdge(vector<ipair> adj[], int u, int v, int wt) {
     adj[u].push_back(make_pair(v, wt));
 }
+void print(vector<ipair>adj[],int V){
+vector<ipair>::iterator it;
+for(int u=0;u<V;++u){
+for (it = adj[u].begin(); it != adj[u].end(); ++it) {
+int v = (*it).first;
+            int wt = (*it).second;
+cout<<u<<"->"<<v<<" "<<wt<<endl;
+}
+}
+}
 
 void deixtra(vector<ipair> adj[], int V, int s) {
     vector<bool> visit(V, false);
@@ -18,8 +28,8 @@ void deixtra(vector<ipair> adj[], int V, int s) {
     vector<ipair>::iterator it;
     priority_queue<ipair, vector<ipair>, greater<ipair>> pq;
 
-    dist[s] = 0;
-    pq.push(make_pair(dist[s], s));
+    dist[0] = 0;
+    pq.push(make_pair(dist[0], 0));
 
     while (!pq.empty()) {
         int u = pq.top().second;
@@ -40,22 +50,26 @@ void deixtra(vector<ipair> adj[], int V, int s) {
         }
     }
 
-    for (int i = 0; i < V; ++i)
+    for (int i = 1; i < V; ++i)
         cout << parent[i] << "->" << i << " " << dist[i] << endl;
 }
 
 int main() {
-    int V = 5;
+    const int V = 5;
     vector<ipair> adj[V];
 
-    addEdge(adj, 0, 1, 4);
-    addEdge(adj, 0, 2, 1);
-    addEdge(adj, 2, 1, 2);
-    addEdge(adj, 1, 3, 1);
-    addEdge(adj, 2, 3, 5);
-    addEdge(adj, 3, 4, 3);
+    addEdge(adj, 0, 1, 10);
+    addEdge(adj, 0, 3, 30);
+    addEdge(adj, 0, 4, 100);
+    addEdge(adj, 1, 2, 50);
+    addEdge(adj, 2, 4, 10);
+    addEdge(adj, 3, 2, 20);
+    addEdge(adj, 3, 4, 60);
 
-    deixtra(adj, V, 0);
+    deixtra(adj,V,0);
+    cout<<endl;
+
+    print(adj,V);
 
     return 0;
 }
