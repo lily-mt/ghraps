@@ -16,8 +16,8 @@ for (it = adj[u].begin(); it != adj[u].end(); ++it) {
 int v = (*it).first;
             int wt = (*it).second;
 cout<<u<<"->"<<v<<" "<<wt<<endl;
-}
-}
+        }
+    }
 }
 
 void deixtra(vector<ipair> adj[], int V, int s) {
