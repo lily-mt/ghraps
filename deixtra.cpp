@@ -10,12 +10,12 @@ void addEdge(vector<ipair> adj[], int u, int v, int wt) {
     adj[u].push_back(make_pair(v, wt));
 }
 void print(vector<ipair>adj[],int V){
-vector<ipair>::iterator it;
-for(int u=0;u<V;++u){
-for (it = adj[u].begin(); it != adj[u].end(); ++it) {
-int v = (*it).first;
+   vector<ipair>::iterator it;
+    for(int u=0;u<V;++u){
+       for (it = adj[u].begin(); it != adj[u].end(); ++it) {
+            int v = (*it).first;
             int wt = (*it).second;
-cout<<u<<"->"<<v<<" "<<wt<<endl;
+            cout<<u<<"->"<<v<<" "<<wt<<endl;
         }
     }
 }
